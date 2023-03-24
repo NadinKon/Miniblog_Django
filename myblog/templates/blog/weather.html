@@ -1,0 +1,51 @@
+{% load static %}
+<html >
+<head>
+	<title>Weather</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+
+	<link rel="shortcut icon" href="css/images/favicon.ico" />
+
+</head>
+<body>
+<div class="shell">
+	<div class="border">
+
+		<div id="navigation">
+			<ul>
+			    <li><a href="/" class="active">Home</a></li>
+			    <li><a href="/admin">Log in</a></li>
+			    <li><a href="/weather">Weather</a></li>
+			</ul>
+		</div>
+
+		<div id="main">
+			<div id="content" class="left">
+
+				<div class="projects">
+					<h3>погода на сегодня</h3>
+					<div class="alert alert-danger">
+						<b>Город:</b> {{ info.city }}<br>
+						<b>x:</b> {{ info.x }}<br>
+						<b>Температура:</b> {{ info.temp }}<sup>o</sup><br>
+						<img src="http://openweathermap.org/img/w/{{ info.icon }}.png" alt="Фото погоды" class="img-thumbnail">
+
+
+					</div>
+
+				</div>
+			</div>
+
+			<div class="cl"></div>
+		</div>
+
+
+	</div>
+
+	<div id="footer">
+		<p class="copy right">Copyright &copy;  2022 </p>
+	</div>
+</div>
+</body>
+</html>

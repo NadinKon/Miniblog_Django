@@ -1,0 +1,55 @@
+{% load static %}
+<html >
+<head>
+	<title>My Blog</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" media="all" />
+
+	<link rel="shortcut icon" href="css/images/favicon.ico" />
+
+</head>
+<body>
+<div class="shell">
+	<div class="border">
+
+		<div id="navigation">
+			<ul>
+			    <li><a href="/" class="active">Home</a></li>
+			    <li><a href="/admin">Log in</a></li>
+			    <li><a href="/weather">Weather</a></li>
+			</ul>
+		</div>
+
+		<div id="main">
+			<div id="content" class="left">
+				
+				<div class="projects">
+					<h3>Articles</h3>
+					{% for post in post_list %}
+					<div class="item">
+						<div class="image left">
+							<a href="#"><img src="{{ post.img.url }}" width="200px" /></a>
+						</div>
+						<div class="text left">
+							<h4><a href="{{ post.id }}">{{ post.title }}</a></h4>
+							<p>{{ post.description }}</p>
+							<p>Autor: {{ post.author }}</p>
+						</div>
+						<div class="cl">&nbsp;</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			
+			<div class="cl">&nbsp;</div>
+		</div>
+		
+
+	</div>
+	
+	<div id="footer">
+		<p class="copy right">Copyright &copy;  2022 </p>
+	</div>
+</div>
+</body>
+</html>
