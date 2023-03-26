@@ -29,13 +29,15 @@ class AddComments(View):
 
 
 def index(request):
+
     try:
         city = 'Obinitsa'
-        params = {'q': city, 'units': 'metric', 'lang': 'ru', 'appid': '1912624fd*************f90fd4a0b'}
+        params = {'q': city, 'units': 'metric', 'lang': 'ru', 'appid': '1912624fd49c501f2986b6ff90fd4a0b'}
         response = requests.get(f'https://api.openweathermap.org/data/2.5/weather', params=params)
         if not response:
             raise
         res = response.json()
+
         city_info = {'city': city, 'temp': round(res['main']['temp']), 'icon': res['weather'][0]['icon'], 'x': res['weather'][0]['description']}
 
     except:
