@@ -29,29 +29,19 @@ class AddComments(View):
 
 
 def index(request):
-    #i = request.POST
-    #print(i['city'])
-    city_info = None
-
+    city = 'Obinitsa'
     if request.method == 'POST':
-        city = 'Varna'
         i = request.POST
         city = i['city']
-
-
-        try:
-            #city = i['city']
-            #city = 'Varna'
-            params = {'q': city, 'units': 'metric', 'lang': 'en', 'appid': '1912624fd49c501f2986b6ff90fd4a0b'}
-            response = requests.get(f'https://api.openweathermap.org/data/2.5/weather', params=params)
-            if not response:
-                raise
-            res = response.json()
-
-            city_info = {'city': city, 'temp': round(res['main']['temp']), 'icon': res['weather'][0]['icon'], 'x': res['weather'][0]['description']}
-
-        except:
+    try:
+        params = {'q': city, 'units': 'metric', 'lang': 'en', 'appid': '1912624fd49c501f2986b6ff90fd4a0b'}
+        response = requests.get(f'https://api.openweathermap.org/data/2.5/weather', params=params)
+        if not response:
             raise
+        res = response.json()
+        city_info = {'city': city, 'temp': round(res['main']['temp']), 'icon': res['weather'][0]['icon'], 'x': res['weather'][0]['description']}
+    except:
+        raise
     context = {'info': city_info}
 
     return render(request, 'blog/weather.html', context)
