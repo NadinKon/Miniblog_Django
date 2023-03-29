@@ -25,12 +25,18 @@
 
 				<div class="projects">
 					<h3>Weather today</h3>
+
 					<div class="alert alert-danger">
 						<b>City:</b> {{ info.city }}<br>
-						<b>x:</b> {{ info.x }}<br>
-						<b>Temperature:</b> {{ info.temp }}<sup>o</sup><br>
+						<b>Temperature: </b> {{ info.temp }}<sup>o</sup> {{ info.x }}<br>
 						<img src="http://openweathermap.org/img/w/{{ info.icon }}.png" alt="Фото погоды" class="img-thumbnail">
+                    <form action="" method="post">
+						{% csrf_token %}
+						<label for="city"><b>Weather in your city </b></label>
+						<input type="text" id="city" class="form-control" name="city" placeholder="enter city">
+						<input type="submit" name="send" value="Узнать" class="mt-2 btm btn-danger">
 
+					</form>
 
 					</div>
 
